@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.restaurant.HelloController">
+  <tabs>
+    <Tab id="1" text="Tables">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <DatePicker layoutX="30.0" layoutY="70.0" />
+                   <TextField layoutX="226.0" layoutY="70.0" promptText="heure HH:MM:SS " />
+                  <ListView layoutX="30.0" layoutY="104.0" prefHeight="200.0" prefWidth="543.0" style="-fx-border-color: black;" />
+                  <Button layoutX="425.0" layoutY="70.0" mnemonicParsing="false" text="Consulter" />
+                  <Button layoutX="425.0" layoutY="30.0" mnemonicParsing="false" text="Réserver" />
+                  <TextField layoutX="30.0" layoutY="30.0" promptText="numéro table" />
+                  <TextField layoutX="205.0" layoutY="30.0" promptText="nombre de personne" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab id="2" text="Commandes">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TextField layoutX="24.0" layoutY="23.0" promptText="numéro de la réservation" />
+                  <TextField layoutX="197.0" layoutY="23.0" prefHeight="26.0" prefWidth="105.0" promptText="numéro du plat" />
+                  <TextField layoutX="330.0" layoutY="23.0" prefHeight="26.0" prefWidth="66.0" promptText="quantité" />
+                  <Button id="commanderPlat" layoutX="477.0" layoutY="23.0" mnemonicParsing="false" text="commander" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab id="3" text="Plats">
+      <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="34.0" layoutY="14.0" text="Plats disponibles : " />
+                  <ListView layoutX="34.0" layoutY="49.0" prefHeight="279.0" prefWidth="523.0" style="-fx-border-color: black;" />
+                  <Button id="consulterPlats" layoutX="490.0" layoutY="19.0" mnemonicParsing="false" text="Consulter" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+      <Tab id="4" text="Compte">
+          <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TextField layoutX="37.0" layoutY="80.0" prefHeight="26.0" prefWidth="386.0" />
+                  <Label layoutX="37.0" layoutY="30.0" text="Serveur :" />
+                  <Button layoutX="486.0" layoutY="26.0" mnemonicParsing="false" text="Déconnexion" />
+               </children></AnchorPane>
+          </content>
+      </Tab>
+  </tabs>
+</TabPane>

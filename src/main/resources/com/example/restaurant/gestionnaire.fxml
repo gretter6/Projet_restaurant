@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.restaurant.HelloController">
+    <tabs>
+        <Tab id="1" text="Tables">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <children>
+                        <DatePicker layoutX="30.0" layoutY="70.0" />
+                        <TextField layoutX="226.0" layoutY="70.0" promptText="heure HH:MM:SS " />
+                        <ListView layoutX="30.0" layoutY="104.0" prefHeight="200.0" prefWidth="543.0" style="-fx-border-color: black;" />
+                        <Button id="consulterTable" layoutX="425.0" layoutY="70.0" mnemonicParsing="false" text="Consulter" />
+                        <Button id="reserverTable" layoutX="525.0" layoutY="30.0" mnemonicParsing="false" text="Réserver" />
+                        <TextField layoutX="30.0" layoutY="30.0" prefHeight="26.0" prefWidth="85.0" promptText="numéro table" />
+                        <TextField layoutX="125.0" layoutY="30.0" prefHeight="26.0" prefWidth="130.0" promptText="nombre de personne" />
+                  <DatePicker layoutX="258.0" layoutY="30.0" />
+                  <TextField layoutX="438.0" layoutY="30.0" prefHeight="26.0" prefWidth="72.0" promptText="HH:MM:SS" />
+                    </children></AnchorPane>
+            </content>
+        </Tab>
+        <Tab id="2" text="Commandes">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <children>
+                        <TextField layoutX="24.0" layoutY="23.0" promptText="numéro de la réservation" />
+                        <TextField layoutX="197.0" layoutY="23.0" prefHeight="26.0" prefWidth="105.0" promptText="numéro du plat" />
+                        <TextField layoutX="330.0" layoutY="23.0" prefHeight="26.0" prefWidth="66.0" promptText="quantité" />
+                        <Button id="commanderPlat" layoutX="477.0" layoutY="23.0" mnemonicParsing="false" text="commander" />
+                    </children></AnchorPane>
+            </content>
+        </Tab>
+        <Tab id="3" text="Disponibilité plats">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <children>
+                        <Label layoutX="34.0" layoutY="14.0" text="Plats disponibles : " />
+                        <ListView layoutX="34.0" layoutY="49.0" prefHeight="279.0" prefWidth="523.0" style="-fx-border-color: black;" />
+                        <Button id="consulterPlats" layoutX="490.0" layoutY="19.0" mnemonicParsing="false" text="Consulter" />
+                    </children></AnchorPane>
+            </content>
+        </Tab>
+        <Tab id="4" text="Créa/MAJ plats">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" text="Création et mise à jour d'un plat : " />
+                  <TextField layoutX="14.0" layoutY="46.0" promptText="Libellé" />
+                  <TextField layoutX="193.0" layoutY="46.0" prefHeight="26.0" prefWidth="88.0" promptText="Type" />
+                  <TextField layoutX="310.0" layoutY="47.0" prefHeight="26.0" prefWidth="80.0" promptText="prix unitaire" />
+                  <TextField layoutX="425.0" layoutY="48.0" prefHeight="26.0" prefWidth="96.0" promptText="quantité servie" />
+                  <Button id="creerPlat" layoutX="14.0" layoutY="90.0" mnemonicParsing="false" text="Créer" />
+                  <TextField layoutX="15.0" layoutY="134.0" promptText="libellé du plat à modifier" />
+                  <TextField layoutX="16.0" layoutY="186.0" promptText="libellé" />
+                  <TextField layoutX="193.0" layoutY="186.0" prefHeight="26.0" prefWidth="88.0" promptText="Type" />
+                  <TextField layoutX="310.0" layoutY="186.0" prefHeight="26.0" prefWidth="80.0" promptText="prix unitaire" />
+                  <TextField layoutX="425.0" layoutY="186.0" prefHeight="26.0" prefWidth="96.0" promptText="quantité servie" />
+                  <Button id="modifierPlat" layoutX="16.0" layoutY="231.0" mnemonicParsing="false" text="Modifier" />
+               </children>
+                </AnchorPane>
+            </content>
+        </Tab>
+        <Tab id="5" text="Serveurs">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <children>
+                        <Button id="affecterServeur" layoutX="486.0" layoutY="26.0" mnemonicParsing="false" text="Affecter" />
+                  <TextField layoutX="14.0" layoutY="26.0" promptText="prenom nom" />
+                  <TextField layoutX="197.0" layoutY="26.0" promptText="numéro table" />
+                  <Label layoutX="14.0" layoutY="79.0" text="Création / Modification d'un serveur : " />
+                  <TextField layoutX="15.0" layoutY="120.0" prefHeight="26.0" prefWidth="109.0" promptText="email" />
+                  <TextField layoutX="142.0" layoutY="120.0" prefHeight="26.0" prefWidth="110.0" promptText="mot de passe" />
+                  <TextField layoutX="267.0" layoutY="121.0" prefHeight="26.0" prefWidth="137.0" promptText="prenom nom" />
+                  <TextField layoutX="420.0" layoutY="121.0" prefHeight="26.0" prefWidth="125.0" promptText="grade" />
+                  <Button id="creerServeur" layoutX="15.0" layoutY="173.0" mnemonicParsing="false" text="Créer" />
+                  <TextField layoutX="15.0" layoutY="218.0" promptText="nom du serveur" />
+                  <TextField layoutX="16.0" layoutY="265.0" prefHeight="26.0" prefWidth="109.0" promptText="email" />
+                  <TextField layoutX="142.0" layoutY="266.0" prefHeight="26.0" prefWidth="110.0" promptText="mot de passe" />
+                  <TextField layoutX="267.0" layoutY="267.0" prefWidth="137.0" promptText="prenom nom" />
+                  <TextField layoutX="420.0" layoutY="267.0" prefHeight="26.0" prefWidth="125.0" promptText="grade" />
+                  <Button id="modifierServeur" layoutX="16.0" layoutY="319.0" mnemonicParsing="false" text="Modifier" />
+                    </children>
+                </AnchorPane>
+            </content>
+        </Tab>
+        <Tab id="6" text="Addition">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" text="Montant total d'une réservation : " />
+                  <TextField layoutX="14.0" layoutY="43.0" prefHeight="26.0" prefWidth="121.0" promptText="numéro réservation" />
+                  <Button id="calculerMontantTotal" layoutX="154.0" layoutY="44.0" mnemonicParsing="false" text="Calculer" />
+                  <TextArea layoutX="243.0" layoutY="44.0" prefHeight="0.0" prefWidth="199.0" promptText="montant total " />
+                  <Label layoutX="14.0" layoutY="93.0" text="Affecter le montant total à une réservation : " />
+                  <TextField layoutX="14.0" layoutY="131.0" promptText="Montant total" />
+                  <TextField layoutX="183.0" layoutY="131.0" promptText="numéro réservation" />
+                  <Button layoutX="376.0" layoutY="131.0" mnemonicParsing="false" text="Affecter" />
+               </children>
+                </AnchorPane>
+            </content>
+        </Tab>
+        <Tab id="7" text="Chiffre d'affaire">
+            <content>
+                <AnchorPane id="dateFin" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" prefHeight="6.0" prefWidth="286.0" text="Chiffre d'affaire et nombre de commande par serveur" />
+                  <TableView layoutX="14.0" layoutY="41.0" prefHeight="200.0" prefWidth="358.0">
+                    <columns>
+                      <TableColumn prefWidth="112.19999694824219" text="Chiffre d'affaire" />
+                      <TableColumn prefWidth="146.39999389648438" text="Nombre de commandes" />
+                        <TableColumn prefWidth="97.39999389648438" text="Serveur" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="14.0" layoutY="249.0" text="Serveur avec aucun chiffre d'affaire pour une période donnée : " />
+                  <DatePicker id="dateDeb" layoutX="7.0" layoutY="269.0" />
+                  <DatePicker layoutX="8.0" layoutY="308.0" />
+                  <ListView layoutX="200.0" layoutY="270.0" prefHeight="91.0" prefWidth="366.0" style="-fx-border-color: black;" />
+                  <Button id="calculerMontantTotal" layoutX="515.0" layoutY="236.0" mnemonicParsing="false" text="Afficher" />
+                  <Button id="nombreDeCommande" layoutX="390.0" layoutY="41.0" mnemonicParsing="false" text="Afficher" />
+               </children>
+                </AnchorPane>
+            </content>
+        </Tab>
+        <Tab id="8" text="Compte">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <children>
+                        <TextField layoutX="37.0" layoutY="80.0" prefHeight="26.0" prefWidth="386.0" />
+                        <Label layoutX="37.0" layoutY="30.0" text="Gestionnaire : " />
+                        <Button layoutX="486.0" layoutY="26.0" mnemonicParsing="false" onAction="#onDeconnexion" text="Déconnexion" />
+                    </children></AnchorPane>
+            </content>
+        </Tab>
+
+    </tabs>
+</TabPane>
