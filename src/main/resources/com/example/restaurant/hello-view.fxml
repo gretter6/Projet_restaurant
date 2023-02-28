@@ -10,5 +10,7 @@
       <TextField layoutX="226.0" layoutY="133.0" promptText="login" />
       <Button id="connexion" layoutX="264.0" layoutY="275.0" mnemonicParsing="false" onAction="#onConnexion" text="Connexion" />
       <Label id="welcomeText" layoutX="286.0" layoutY="175.0" />
+      <Button id="serveur" layoutX="212.0" layoutY="58.0" mnemonicParsing="false" onAction="#onServeurCo" text="Serveur" />
+      <Button id="gestionnaire" layoutX="311.0" layoutY="58.0" mnemonicParsing="false" onAction="#onGestCo" text="Gestionnaire" />
    </children>
 </Pane>

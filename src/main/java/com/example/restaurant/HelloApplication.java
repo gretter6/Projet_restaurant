@@ -2,48 +2,77 @@ package com.example.restaurant;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TabPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.*;
 
 public class HelloApplication extends Application {
 
-    private Pane panelConnexion = new Pane();
-    private TabPane panelServeur = new TabPane();
-    private TabPane panelGestionnaire = new TabPane();
+    public static Pane panelConnexion = new Pane();
+    public static TabPane panelServeur = new TabPane();
+    public static TabPane panelGestionnaire = new TabPane();
+
+    public static boolean serv = false;
 
     public HelloApplication() {
+    }
+
+    public static Pane pageAccueil() throws IOException {
+        if (panelConnexion.getChildren().size()>0) {
+            panelConnexion.getChildren().remove(0);
+        }
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        Pane inter = fxmlLoader.load();
+        panelConnexion.getChildren().add(inter);
+        return inter;
+    }
+
+    public static void pageServ() throws IOException {
+        FXMLLoader fxmlLoaderS = new FXMLLoader(HelloApplication.class.getResource("serveur.fxml"));
+        panelServeur = fxmlLoaderS.load();
+    }
+
+    public static void pageGest() throws IOException {
+        FXMLLoader fxmlLoaderG = new FXMLLoader(HelloApplication.class.getResource("gestionnaire.fxml"));
+        panelGestionnaire = fxmlLoaderG.load();
     }
 
     @Override
     public void start(Stage stage) throws IOException, SQLException {
         ID.reload();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Pane inter = fxmlLoader.load();
-        panelConnexion.getChildren().add(inter);
+        Pane inter = pageAccueil();
 
-        FXMLLoader fxmlLoaderS = new FXMLLoader(HelloApplication.class.getResource("serveur.fxml"));
-        panelServeur = fxmlLoaderS.load();
+        pageServ();
 
-        FXMLLoader fxmlLoaderG = new FXMLLoader(HelloApplication.class.getResource("gestionnaire.fxml"));
-        panelGestionnaire = fxmlLoaderG.load();
+        pageGest();
 
         Scene scene = new Scene(panelConnexion);
 
-        for (Node nom : panelConnexion.getChildren()){
-            System.out.println(nom.getId());
-        }
 
-        Button boutonCo = (Button) inter.getChildren().get(3);
+//        Button boutonServ = (Button) inter.getChildren().get(5);
+//        Button boutonGest = (Button) inter.getChildren().get(6);
+//
+//        boutonServ.setOnAction(actionEvent -> {
+//            panelConnexion.getChildren().set(0, panelServeur);
+//            HelloApplication.serv = true;
+//        }
+//        );
+//        boutonGest.setOnAction(actionEvent -> {
+//                    panelConnexion.getChildren().set(0, panelGestionnaire);
+//                    serv = false;
+//                    System.out.println(((AnchorPane)(((TabPane)panelConnexion.getChildren().get(0)).getTabs().get(0).getContent())).getChildren());
+//                }
+//        );
 
-        boutonCo.setOnAction(arg0 -> panelConnexion.getChildren().set(0, panelServeur));
+
+
+
 
         /*BoutonRetour.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -59,10 +88,11 @@ public class HelloApplication extends Application {
 
         stage.setTitle("Page d'accueil");
         stage.setScene(scene);
-        //stage.show();
+        stage.show();
 
 
         //partie de test
+        /*
         try {
             ArrayList<String> plats;
             Serveur s = new Serveur();
@@ -102,6 +132,8 @@ public class HelloApplication extends Application {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
+         */
     }
 
     public static void main(String[] args) {
