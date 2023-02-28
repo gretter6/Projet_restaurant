@@ -90,10 +90,10 @@ public class Gestionnaire extends Serveur{
 
     public void creerPlat(String libelle, String type, double prixunit, int qteservie) throws SQLException {
         co.setAutoCommit(false);
-        int numplat = ID.numplat;
+        int numplat = ID.numplat+1;
 
         co.createStatement().executeUpdate(
-          "INSERT INTO plat VALUES ("+numplat+","+libelle+","+type+","+prixunit+","+qteservie+")"
+          "INSERT INTO plat VALUES ("+numplat+", \""+libelle+"\",  \""+type+" \" ,"+prixunit+","+qteservie+")"
         );
 
         ID.reload();
