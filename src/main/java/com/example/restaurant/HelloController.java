@@ -1,8 +1,12 @@
 package com.example.restaurant;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 
 import java.io.IOException;
@@ -123,7 +127,13 @@ public class HelloController {
     private TextField numresaffaddition;
 
     @FXML
-    private TableView tablechaff;
+    private ListView listservchaff;
+
+    @FXML
+    private ListView listchaffchaff;
+
+    @FXML
+    private ListView listnbcochaff;
 
     @FXML
     private DatePicker datedebchaff;
@@ -151,7 +161,6 @@ public class HelloController {
 
     @FXML
     protected void onDeconnexion() throws IOException {
-        //System.out.println("oui");
         HelloApplication.pageAccueil();
     }
 
@@ -230,7 +239,6 @@ public class HelloController {
         String type = typeplatmodif.getText();
         double prixunit = 0;
         int qteservie = 0;
-        System.out.println(prixunitplatmodif.getText());
         if (!prixunitplatmodif.getText().equals("")){
             prixunit = Double.parseDouble(prixunitplatmodif.getText());
         }
@@ -298,15 +306,16 @@ public class HelloController {
 
 
         HashMap<String,Double> d;
+        HashMap<String,Integer> commandes;
         ArrayList<String> listnomServ= new ArrayList<>();
         ArrayList<Double> listChAff = new ArrayList<>();
+        ArrayList<Integer> listCommandes = new ArrayList<>();
 
         d = this.g.chiffreAffaire(datedeb, datefin);
 
         List<Map.Entry<String, Double>> list =
                 new LinkedList<>(d.entrySet());
 
-        // Custom comparator to sort by value in descending order
         Collections.sort(list, (o1, o2) -> (o2.getValue()).compareTo(o1.getValue()));
 
         // Copy elements from the sorted list to a new LinkedHashMap
@@ -317,22 +326,32 @@ public class HelloController {
             listChAff.add(entry.getValue());
         }
 
-
-        System.out.println(sortedMap);
-
         ObservableList<Object> obs = FXCollections.observableArrayList();
         obs.addAll(listChAff);
-        this.tablechaff.setItems(obs);
-        TableColumn tableColumnChAff = (TableColumn) this.tablechaff.getColumns().get(0);
-        System.out.println(tableColumnChAff.getText());
+        this.listchaffchaff.setItems(obs);
 
-        tableColumnChAff.setCellValueFactory(param -> {
-            final int chAff = param.hashCode();
-            return chAff;
-        });
+        ObservableList<Object> obs2 = FXCollections.observableArrayList();
+        obs2.addAll(listnomServ);
+        this.listservchaff.setItems(obs2);
 
+        commandes = this.g.nombreDeCommande(datedeb,datefin);
 
-        this.g.nombreDeCommande(datedeb,datefin);
+        Map sortedMap2 = new TreeMap(commandes);
+        Set set2 = sortedMap2.entrySet();
+
+        for (String serv : listnomServ){
+            for (Object o : set2) {
+                Map.Entry me2 = (Map.Entry) o;
+                if (serv.equals(me2.getKey())){
+                    listCommandes.add((Integer) me2.getValue());
+                    break;
+                }
+            }
+        }
+
+        ObservableList<Object> obs3 = FXCollections.observableArrayList();
+        obs3.addAll(listCommandes);
+        this.listnbcochaff.setItems(obs3);
 
     }
 
@@ -341,8 +360,6 @@ public class HelloController {
         String datedeb = String.valueOf(datedebpaschaff.getValue());
         String datefin = String.valueOf(datefinpaschaff.getValue());
 
-        System.out.println(datedeb);
-        System.out.println(datefin);
         if (!datedeb.equals("null") && !datefin.equals("null")) {
             this.g.pasDeChiffreAff(datedeb, datefin);
 
@@ -355,7 +372,5 @@ public class HelloController {
             this.affichagepaschaff.setItems(obs);
         }
     }
-
-
 
 }

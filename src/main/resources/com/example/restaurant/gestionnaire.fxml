@@ -106,13 +106,6 @@
                 <AnchorPane id="dateFin" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
                   <Label layoutX="14.0" layoutY="14.0" prefHeight="6.0" prefWidth="286.0" text="Chiffre d'affaire et nombre de commande par serveur" />
-                  <TableView fx:id="tablechaff" layoutX="14.0" layoutY="41.0" prefHeight="200.0" prefWidth="358.0">
-                    <columns>
-                      <TableColumn prefWidth="112.19999694824219" text="Chiffre d'affaire" />
-                      <TableColumn prefWidth="146.39999389648438" text="Nombre de commandes" />
-                        <TableColumn prefWidth="97.39999389648438" text="Serveur" />
-                    </columns>
-                  </TableView>
                   <Label layoutX="14.0" layoutY="249.0" text="Serveur avec aucun chiffre d'affaire pour une période donnée : " />
                   <DatePicker id="dateDeb" fx:id="datedebchaff" layoutX="390.0" layoutY="90.0" />
                   <DatePicker fx:id="datefinchaff" layoutX="390.0" layoutY="130.0" />
@@ -121,6 +114,12 @@
                   <Button id="nombreDeCommande" layoutX="390.0" layoutY="41.0" mnemonicParsing="false" onAction="#onAfficherChAff" text="Afficher" />
                   <DatePicker id="dateDeb" fx:id="datedebpaschaff" layoutX="14.0" layoutY="270.0" />
                   <DatePicker fx:id="datefinpaschaff" layoutX="14.0" layoutY="310.0" />
+                  <ListView fx:id="listservchaff" layoutX="14.0" layoutY="68.0" prefHeight="175.0" prefWidth="84.0" />
+                  <ListView fx:id="listchaffchaff" layoutX="118.0" layoutY="68.0" prefHeight="175.0" prefWidth="84.0" />
+                  <ListView fx:id="listnbcochaff" layoutX="220.0" layoutY="68.0" prefHeight="175.0" prefWidth="84.0" />
+                  <Label layoutX="14.0" layoutY="45.0" text="Serveur" />
+                  <Label layoutX="118.0" layoutY="45.0" text="Chiffre d'affaire" />
+                  <Label layoutX="220.0" layoutY="45.0" text="Nb commande" />
                </children>
                 </AnchorPane>
             </content>

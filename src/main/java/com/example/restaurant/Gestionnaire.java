@@ -202,6 +202,7 @@ public class Gestionnaire extends Serveur{
                 );
 
                 while (resRes.next()){
+
                     if (resRes.getString(2).contains(dates.get(cpt))){
 
                         ResultSet resCommandes = co.createStatement().executeQuery("" +
@@ -211,12 +212,13 @@ public class Gestionnaire extends Serveur{
                         );
 
                         resCommandes.next();
+                        nbComm += resCommandes.getInt(1);
 
-                        mapNbCommande.put(nom,resCommandes.getInt(1));
                     }
                 }
                 cpt++;
             }
+            mapNbCommande.put(nom,nbComm);
         }
 
         return mapNbCommande;
