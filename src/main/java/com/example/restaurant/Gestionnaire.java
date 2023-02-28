@@ -17,15 +17,16 @@ public class Gestionnaire extends Serveur{
 
     public void creerServeur(String email,String mdp,String nom, String grade) throws SQLException {
         co.setAutoCommit(false);
+        if ((grade.equals("serveur") || grade.equals("gestionnaire")) && email.contains("@")) {
+            int numserv = ID.numserv + 1;
 
-        int numserv = ID.numserv+1;
+            co.createStatement().executeUpdate("" +
+                    "INSERT INTO serveur VALUES (" + numserv + ",\"" + email + "\",\"" + mdp + "\",\"" + nom + "\",\"" + grade + "\")"
+            );
 
-        co.createStatement().executeUpdate("" +
-                "INSERT INTO serveur VALUES ("+numserv+","+email+","+mdp+","+nom+","+grade+")"
-        );
-
-        ID.reload();
-        co.commit();
+            ID.reload();
+            co.commit();
+        }
     }
 
     public void modifierServeur(String nomAModif, String email,String mdp,String nom, String grade) throws SQLException {
