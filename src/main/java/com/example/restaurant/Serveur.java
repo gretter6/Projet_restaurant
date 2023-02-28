@@ -17,7 +17,8 @@ public class Serveur {
 
         String datheur = date+" "+heure;
         ArrayList<Integer> tables = new ArrayList<>();
-
+        System.out.println(datheur);
+        System.out.println(tables);
         ResultSet resT = co.createStatement().executeQuery("" +
                 "SELECT DISTINCT numtab " +
                 "FROM tabl " +
@@ -29,6 +30,7 @@ public class Serveur {
         );
 
         while (resT.next()){
+            System.out.println("null?");
             tables.add(resT.getInt(1));
         }
 

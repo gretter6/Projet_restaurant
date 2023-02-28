@@ -103,9 +103,19 @@ public class HelloController {
 
     @FXML
     public void onConsulterTabl() throws SQLException {
-        String date = String.valueOf(datepickerconsultertabl);
-        String heure = String.valueOf(heureconsultertabl);
-        this.s.consulterTable(date,heure);
+        String date = String.valueOf(datepickerconsultertabl.getValue());
+        String heure = String.valueOf(heureconsultertabl.getText());
+        ArrayList<Integer> tables;
+        tables = this.s.consulterTable(date,heure);
+        ObservableList<Integer> obs = FXCollections.observableArrayList();
+        obs.addAll(tables);
+
+        for (Integer v : tables){
+            //System.out.println(v);
+        }
+        //System.out.println(date+ " "+ heure);
+
+        this.affichagetabl.setItems(obs);
     }
 
     @FXML
