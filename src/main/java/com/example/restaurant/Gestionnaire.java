@@ -63,12 +63,9 @@ public class Gestionnaire extends Serveur{
     public void affecterServeur(String preNom, int numtab) throws SQLException {
         co.setAutoCommit(false);
 
-
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
         String dateAff = format.format(date);
-
-        System.out.println(dateAff);
 
         ResultSet resNumServ = co.createStatement().executeQuery("" +
                 "SELECT numserv " +
@@ -102,7 +99,6 @@ public class Gestionnaire extends Serveur{
 
     public void modifierPlat(String platAModif,String libelle, String type, double prixunit, int qteservie) throws SQLException {
         co.setAutoCommit(false);
-        System.out.println(platAModif);
         if (!platAModif.equals("")) {
             ResultSet resPlat = co.createStatement().executeQuery(
                     "SELECT * " +
