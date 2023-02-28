@@ -46,9 +46,10 @@
           <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TextField layoutX="37.0" layoutY="80.0" prefHeight="26.0" prefWidth="386.0" />
                   <Label layoutX="37.0" layoutY="30.0" text="Serveur :" />
                   <Button layoutX="486.0" layoutY="26.0" mnemonicParsing="false" onAction="#onDeconnexion" text="Déconnexion" />
+                  <Label fx:id="compteServ" layoutX="37.0" layoutY="74.0" />
+                  <Button layoutX="107.0" layoutY="26.0" mnemonicParsing="false" onAction="#onAfficherCompte" text="Afficher le compte" />
                </children></AnchorPane>
           </content>
       </Tab>

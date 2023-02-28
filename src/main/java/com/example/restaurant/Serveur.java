@@ -12,6 +12,26 @@ public class Serveur {
     public Serveur() throws SQLException {
     }
 
+    public ArrayList<String> seConnecter(String email, String mdp) throws SQLException {
+        co.setAutoCommit(false);
+
+        ArrayList<String> serv = new ArrayList<>();
+        String grade = "";
+        ResultSet res = co.createStatement().executeQuery("" +
+                "SELECT * " +
+                "FROM serveur " +
+                "WHERE email = \""+email+"\" AND passwd = \""+mdp+"\""
+        );
+
+        res.next();
+
+        serv.add(res.getString(2));
+        serv.add(res.getString(4));
+        serv.add(res.getString(5));
+
+        return serv;
+    }
+
     public ArrayList<Integer> consulterTable(String date, String heure) throws SQLException {
         co.setAutoCommit(false);
 

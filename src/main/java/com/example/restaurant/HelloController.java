@@ -1,12 +1,8 @@
 package com.example.restaurant;
 
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.chart.PieChart;
-import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 
 import java.io.IOException;
@@ -18,6 +14,19 @@ public class HelloController {
     //Attributs pour les serveurs (cela servira aussi pour les gestionnaires)
     private Serveur s = new Serveur();
     private Gestionnaire g = new Gestionnaire();
+
+    private static ArrayList<String> compte;
+    @FXML
+    private Label compteServ;
+
+    @FXML
+    private Label compteGest;
+
+    @FXML
+    private TextField passwdCo;
+
+    @FXML
+    private TextField emailCo;
 
     @FXML
     private TextField numtabreserver;
@@ -151,12 +160,26 @@ public class HelloController {
     private ListView affichagepaschaff;
 
     public HelloController() throws SQLException {
+        compte = new ArrayList<>();
     }
 
     //Méthode pour les actions d'un serveur (cela servira pour les gestionnaires)
     @FXML
-    protected void onConnexion(){
-        System.out.println("oui");
+    protected void onConnexion() throws SQLException {
+        String email = emailCo.getText();
+        String passwd = passwdCo.getText();
+        ArrayList<String> serv;
+
+        serv = this.s.seConnecter(email,passwd);
+        compte=serv;
+
+        String grade = serv.get(2);
+        if (grade.equals("serveur")){
+            this.onServeurCo();
+        } else if (grade.equals("gestionnaire")) {
+            this.onGestCo();
+        }
+
     }
 
     @FXML
@@ -371,6 +394,20 @@ public class HelloController {
 
             this.affichagepaschaff.setItems(obs);
         }
+    }
+
+    @FXML
+    public void onAfficherCompte(){
+        if (HelloApplication.serv) {
+            for (String v : compte) {
+                this.compteServ.setText(this.compteServ.getText() + " " + v);
+            }
+        }else{
+            for (String v : compte) {
+                this.compteGest.setText(this.compteGest.getText() + " " + v);
+            }
+        }
+
     }
 
 }
