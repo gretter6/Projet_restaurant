@@ -32,33 +32,35 @@ public class Gestionnaire extends Serveur{
     public void modifierServeur(String nomAModif, String email,String mdp,String nom, String grade) throws SQLException {
         co.setAutoCommit(false);
 
-        ResultSet resServ = co.createStatement().executeQuery(
-          "SELECT * " +
-                  "FROM serveur " +
-                  "WHERE nomserv = "+nomAModif
-        );
+        if (!nomAModif.equals("") && (grade.equals("serveur") || grade.equals("gestionnaire"))) {
+            ResultSet resServ = co.createStatement().executeQuery(
+                    "SELECT * " +
+                            "FROM serveur " +
+                            "WHERE nomserv = \"" + nomAModif + "\""
+            );
 
-        resServ.next();
+            resServ.next();
 
-        if (email.equals("")){
-            email = resServ.getString("email");
-        }
-        if (mdp.equals("")){
-            mdp = resServ.getString("passwd");
-        }
-        if (nom.equals("")){
-            nom = nomAModif;
-        }
-        if (grade.equals("")){
-            grade = resServ.getString("grade");
-        }
+            if (email.equals("")) {
+                email = resServ.getString("email");
+            }
+            if (mdp.equals("")) {
+                mdp = resServ.getString("passwd");
+            }
+            if (nom.equals("")) {
+                nom = nomAModif;
+            }
+            if (grade.equals("")) {
+                grade = resServ.getString("grade");
+            }
 
-        co.createStatement().executeUpdate("" +
-                "UPDATE serveur SET email = "+email+", passwd = "+mdp+",nomserv = "+nom+", grade = "+grade+" "+
-                "WHERE nomserv = "+nomAModif
-        );
+            co.createStatement().executeUpdate("" +
+                    "UPDATE serveur SET email = \"" + email + "\", passwd = \"" + mdp + "\",nomserv = \"" + nom + "\", grade = \"" + grade + "\" " +
+                    "WHERE nomserv = \"" + nomAModif + "\""
+            );
 
-        co.commit();
+            co.commit();
+        }
     }
 
     public void affecterServeur(String preNom, int numtab) throws SQLException {
