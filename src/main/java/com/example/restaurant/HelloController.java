@@ -94,26 +94,22 @@ public class HelloController {
 
     @FXML
     public void onReserverTabl() throws SQLException {
-        int numtab = Integer.parseInt(String.valueOf(numtabreserver));
-        int nbpers = Integer.parseInt(String.valueOf(datereservertabl));
-        String date = String.valueOf(datereservertabl);
-        String heure = String.valueOf(heurereservertabl);
+        int numtab = Integer.parseInt(numtabreserver.getText());
+        int nbpers = Integer.parseInt(nbperstabreserver.getText());
+        String date = String.valueOf(datereservertabl.getValue());
+        String heure = heurereservertabl.getText();
+
         this.s.reserverTable(numtab,nbpers,date,heure);
     }
 
     @FXML
     public void onConsulterTabl() throws SQLException {
         String date = String.valueOf(datepickerconsultertabl.getValue());
-        String heure = String.valueOf(heureconsultertabl.getText());
+        String heure = heureconsultertabl.getText();
         ArrayList<Integer> tables;
         tables = this.s.consulterTable(date,heure);
         ObservableList<Integer> obs = FXCollections.observableArrayList();
         obs.addAll(tables);
-
-        for (Integer v : tables){
-            //System.out.println(v);
-        }
-        //System.out.println(date+ " "+ heure);
 
         this.affichagetabl.setItems(obs);
     }
