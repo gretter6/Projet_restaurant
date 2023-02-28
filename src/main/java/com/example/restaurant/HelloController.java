@@ -132,6 +132,12 @@ public class HelloController {
     private DatePicker datefinchaff;
 
     @FXML
+    private DatePicker datedebpaschaff;
+
+    @FXML
+    private DatePicker datefinpaschaff;
+
+    @FXML
     private ListView affichagepaschaff;
 
     public HelloController() throws SQLException {
@@ -292,21 +298,62 @@ public class HelloController {
 
 
         HashMap<String,Double> d;
+        ArrayList<String> listnomServ= new ArrayList<>();
+        ArrayList<Double> listChAff = new ArrayList<>();
+
         d = this.g.chiffreAffaire(datedeb, datefin);
-        Map sortedMap = new TreeMap(d);
-        Set set2 = sortedMap.entrySet();
-        for (Object o : set2) {
-            Map.Entry me2 = (Map.Entry) o;
-            System.out.print(me2.getKey() + ": ");
-            System.out.println(me2.getValue());
+
+        List<Map.Entry<String, Double>> list =
+                new LinkedList<>(d.entrySet());
+
+        // Custom comparator to sort by value in descending order
+        Collections.sort(list, (o1, o2) -> (o2.getValue()).compareTo(o1.getValue()));
+
+        // Copy elements from the sorted list to a new LinkedHashMap
+        LinkedHashMap<String, Double> sortedMap = new LinkedHashMap<>();
+        for (Map.Entry<String, Double> entry : list) {
+            sortedMap.put(entry.getKey(), entry.getValue());
+            listnomServ.add(entry.getKey());
+            listChAff.add(entry.getValue());
         }
+
+
+        System.out.println(sortedMap);
+
+        ObservableList<Object> obs = FXCollections.observableArrayList();
+        obs.addAll(listChAff);
+        this.tablechaff.setItems(obs);
+        TableColumn tableColumnChAff = (TableColumn) this.tablechaff.getColumns().get(0);
+        System.out.println(tableColumnChAff.getText());
+
+        tableColumnChAff.setCellValueFactory(param -> {
+            final int chAff = param.hashCode();
+            return chAff;
+        });
+
+
+        this.g.nombreDeCommande(datedeb,datefin);
 
     }
 
     @FXML
-    public void onAfficherPasChAff()
-    {
+    public void onAfficherPasChAff() throws SQLException {
+        String datedeb = String.valueOf(datedebpaschaff.getValue());
+        String datefin = String.valueOf(datefinpaschaff.getValue());
 
+        System.out.println(datedeb);
+        System.out.println(datefin);
+        if (!datedeb.equals("null") && !datefin.equals("null")) {
+            this.g.pasDeChiffreAff(datedeb, datefin);
+
+            ArrayList<String> serveurs;
+            serveurs = this.g.pasDeChiffreAff(datedeb, datefin);
+
+            ObservableList<String> obs = FXCollections.observableArrayList();
+            obs.addAll(serveurs);
+
+            this.affichagepaschaff.setItems(obs);
+        }
     }
 
 
