@@ -266,9 +266,17 @@ public class HelloController {
 
     @FXML
     public void onCalculerAddition() throws SQLException {
-        int numres = Integer.parseInt(numrescalculeraddition.getText());
+        int numres = 0;
+        double montant = 0;
+        if (!numrescalculeraddition.getText().equals("")) {
+            numres = Integer.parseInt(numrescalculeraddition.getText());
+        }
 
-        this.g.calculerMontantTotal(numres);
+        if (numres!=0) {
+            montant = this.g.calculerMontantTotal(numres);
+            this.montantcalculaddition.setText(String.valueOf(montant));
+        }
+
     }
 
     @FXML

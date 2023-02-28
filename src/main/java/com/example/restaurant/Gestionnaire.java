@@ -135,7 +135,6 @@ public class Gestionnaire extends Serveur{
 
     public double calculerMontantTotal(int numres) throws SQLException {
         co.setAutoCommit(false);
-
         double montant = 0;
 
         ResultSet commande = co.createStatement().executeQuery("" +
