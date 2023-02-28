@@ -116,9 +116,9 @@ public class HelloController {
 
     @FXML
     public void onCommanderPlat() throws SQLException {
-        int numres = Integer.parseInt(String.valueOf(numresplat));
-        int numplat = Integer.parseInt(String.valueOf(numplatcommander));
-        int qte = Integer.parseInt(String.valueOf(qtecommander));
+        int numres = Integer.parseInt(numresplat.getText());
+        int numplat = Integer.parseInt(numplatcommander.getText());
+        int qte = Integer.parseInt(qtecommander.getText());
         this.s.commanderPlat(numres,numplat,qte);
     }
 
