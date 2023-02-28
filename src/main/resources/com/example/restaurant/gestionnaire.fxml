@@ -112,14 +112,18 @@
                   <ListView fx:id="affichagepaschaff" layoutX="213.0" layoutY="270.0" prefHeight="91.0" prefWidth="359.0" style="-fx-border-color: black;" />
                   <Button id="calculerMontantTotal" layoutX="515.0" layoutY="236.0" mnemonicParsing="false" onAction="#onAfficherPasChAff" text="Afficher" />
                   <Button id="nombreDeCommande" layoutX="390.0" layoutY="41.0" mnemonicParsing="false" onAction="#onAfficherChAff" text="Afficher" />
-                  <DatePicker id="dateDeb" fx:id="datedebpaschaff" layoutX="14.0" layoutY="270.0" />
-                  <DatePicker fx:id="datefinpaschaff" layoutX="14.0" layoutY="310.0" />
+                  <DatePicker id="dateDeb" fx:id="datedebpaschaff" layoutX="14.0" layoutY="290.0" />
+                  <DatePicker fx:id="datefinpaschaff" layoutX="14.0" layoutY="335.0" />
                   <ListView fx:id="listservchaff" layoutX="14.0" layoutY="68.0" prefHeight="175.0" prefWidth="84.0" />
                   <ListView fx:id="listchaffchaff" layoutX="118.0" layoutY="68.0" prefHeight="175.0" prefWidth="84.0" />
                   <ListView fx:id="listnbcochaff" layoutX="220.0" layoutY="68.0" prefHeight="175.0" prefWidth="84.0" />
                   <Label layoutX="14.0" layoutY="45.0" text="Serveur" />
                   <Label layoutX="118.0" layoutY="45.0" text="Chiffre d'affaire" />
                   <Label layoutX="220.0" layoutY="45.0" text="Nb commande" />
+                  <Label layoutX="355.0" layoutY="94.0" text="Début" />
+                  <Label layoutX="357.0" layoutY="134.0" text="Fin" />
+                  <Label layoutX="14.0" layoutY="270.0" text="Date de début : " />
+                  <Label layoutX="14.0" layoutY="316.0" text="Date de fin : " />
                </children>
                 </AnchorPane>
             </content>
@@ -131,6 +135,7 @@
                         <Label layoutX="37.0" layoutY="30.0" text="Gestionnaire : " />
                         <Button layoutX="486.0" layoutY="26.0" mnemonicParsing="false" onAction="#onDeconnexion" text="Déconnexion" />
                   <Label fx:id="compteGest" layoutX="37.0" layoutY="69.0" />
+                  <Button layoutX="141.0" layoutY="26.0" mnemonicParsing="false" onAction="#onAfficherCompte" text="Afficher le compte" />
                     </children></AnchorPane>
             </content>
         </Tab>
