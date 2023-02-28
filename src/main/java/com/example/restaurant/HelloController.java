@@ -222,8 +222,15 @@ public class HelloController {
         String platAModif = libelleplatAmodif.getText();
         String libelle = libelleplatmodif.getText();
         String type = typeplatmodif.getText();
-        double prixunit = Double.parseDouble(prixunitplatmodif.getText());
-        int qteservie = Integer.parseInt(qteplatmodif.getText());
+        double prixunit = 0;
+        int qteservie = 0;
+        System.out.println(prixunitplatmodif.getText());
+        if (!prixunitplatmodif.getText().equals("")){
+            prixunit = Double.parseDouble(prixunitplatmodif.getText());
+        }
+        if (!qteplatmodif.getText().equals("")) {
+            qteservie = Integer.parseInt(qteplatmodif.getText());
+        }
 
         this.g.modifierPlat(platAModif,libelle,type,prixunit,qteservie);
     }
@@ -275,7 +282,7 @@ public class HelloController {
         String datedeb = String.valueOf(datedebchaff.getValue());
         String datefin = String.valueOf(datefinchaff.getValue());
 
-        
+
         HashMap<String,Double> d;
         d = this.g.chiffreAffaire(datedeb, datefin);
         Map sortedMap = new TreeMap(d);

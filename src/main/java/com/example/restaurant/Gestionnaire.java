@@ -102,34 +102,36 @@ public class Gestionnaire extends Serveur{
 
     public void modifierPlat(String platAModif,String libelle, String type, double prixunit, int qteservie) throws SQLException {
         co.setAutoCommit(false);
+        System.out.println(platAModif);
+        if (!platAModif.equals("")) {
+            ResultSet resPlat = co.createStatement().executeQuery(
+                    "SELECT * " +
+                            "FROM plat " +
+                            "WHERE libelle = \"" +platAModif+"\""
+            );
 
-        ResultSet resPlat = co.createStatement().executeQuery(
-                "SELECT * " +
-                        "FROM plat " +
-                        "WHERE libelle = "+platAModif
-        );
+            resPlat.next();
 
-        resPlat.next();
+            if (libelle.equals("")) {
+                libelle = platAModif;
+            }
+            if (type.equals("")) {
+                type = resPlat.getString("type");
+            }
+            if (prixunit == 0) {
+                prixunit = resPlat.getDouble("prixunit");
+            }
+            if (qteservie == 0) {
+                qteservie = resPlat.getInt("qteservie");
+            }
 
-        if (libelle.equals("")){
-            libelle = platAModif;
+            co.createStatement().executeUpdate("" +
+                    "UPDATE plat SET libelle = \"" + libelle + "\", type = \"" + type + "\",prixunit = " + prixunit + ", qteservie = " + qteservie + " " +
+                    "WHERE libelle = \"" + platAModif+"\""
+            );
+
+            co.commit();
         }
-        if (type.equals("")){
-            type = resPlat.getString("type");
-        }
-        if (prixunit==0){
-            prixunit = resPlat.getDouble("prixunit");
-        }
-        if (qteservie==0){
-            qteservie = resPlat.getInt("qteservie");
-        }
-
-        co.createStatement().executeUpdate("" +
-                "UPDATE plat SET libelle = "+libelle+", type = "+type+",prixunit = "+prixunit+", qteservie = "+qteservie+" "+
-                "WHERE libelle = "+platAModif
-        );
-
-        co.commit();
     }
 
     public double calculerMontantTotal(int numres) throws SQLException {

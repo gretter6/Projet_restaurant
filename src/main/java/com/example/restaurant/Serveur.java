@@ -55,7 +55,6 @@ public class Serveur {
 
         ResultSet nbp = co.createStatement().executeQuery("SELECT COUNT(*) AS nb FROM plat;");
         nbp.next();
-        System.out.println(nbp.getInt("nb"));
         for (int i = 1 ; i <= nbp.getInt(1) ; i++){
 
 
